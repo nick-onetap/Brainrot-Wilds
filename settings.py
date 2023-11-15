@@ -3,8 +3,8 @@ DEFAULT_IMAGE_SIZE = (300, 300)
 FPS = 120
 HEIGHT = 1000
 WIDTH = 1600
-START_X, START_Y = 50, -300
-OFFSET_X, OFFSET_Y = 20, 0
+START_X, START_Y = 45, -300
+OFFSET_X, OFFSET_Y = -2, 0
 
 
 # Images
@@ -14,8 +14,8 @@ SYM_PATH = 'graphics'
 
 # Symbols
 symbols = {
-    'chungus': f"{SYM_PATH}/chungus.png",
-    'amogus': f"{SYM_PATH}/amogus.png",
+    'crunchwrap': f"{SYM_PATH}/crunchwrap.png",
+    'dogecoin': f"{SYM_PATH}/dogecoin.png",
     'bingus': f"{SYM_PATH}/bingus.png",
     'doge': f"{SYM_PATH}/doge.png",
     'tucker': f"{SYM_PATH}/tucker.png"

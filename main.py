@@ -5,6 +5,10 @@ import pygame, sys
 class Game:
     def __init__(self):
 
+        # Icon
+        programIcon = pygame.image.load('graphics/icon.png')
+        pygame.display.set_icon(programIcon)
+
         # Setup
         pygame.init()
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
