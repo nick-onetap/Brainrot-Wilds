@@ -22,8 +22,8 @@ class Reel:
 
     def animate(self, delta_time):
         if self.reel_is_spinning:
-            self.delay_time -= (delta_time * 1000)
-            self.spin_time -= (delta_time * 1000)
+            self.delay_time -= (delta_time * 800)
+            self.spin_time -= (delta_time * 800)
             reel_is_stopping = False
 
             if self.spin_time < 0:

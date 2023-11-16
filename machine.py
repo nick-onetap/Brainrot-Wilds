@@ -59,6 +59,7 @@ class Machine:
                 #self.spin_sound.play()
 
     def update(self, delta_time):
+        self.cooldowns()
         self.input()
         self.draw_reels(delta_time)
         for reel in self.reel_list:
