@@ -1,4 +1,4 @@
-# Function to detect wins
+# Win Detection
 
 def flip_horizontal(result):
     horizontal_values = []

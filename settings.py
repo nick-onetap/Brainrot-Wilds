@@ -12,6 +12,12 @@ BG_IMAGE_PATH = 'graphics/bgimage.jpg'
 GAME_INDICES = [1, 2, 3] # 0 and 4 will exist outside
 SYM_PATH = 'graphics'
 
+# Text
+TEXT_COLOR = 'Red'
+UI_FONT = 'graphics/go3v2.ttf'
+UI_FONT_SIZE = 30
+WIN_FONT_SIZE = 100
+
 # Symbols
 symbols = {
     'crunchwrap': f"{SYM_PATH}/crunchwrap.png",

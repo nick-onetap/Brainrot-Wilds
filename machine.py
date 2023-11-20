@@ -1,6 +1,7 @@
 from player import Player
 from reel import *
 from settings import *
+from ui import UI
 from wins import *
 import pygame
 
@@ -20,6 +21,7 @@ class Machine:
 
         self.spawn_reels()
         self.currPlayer = Player()
+        self.ui = UI(self.currPlayer)
 
     # Spins only if all reels are not spinning
     def cooldowns(self):
@@ -120,3 +122,4 @@ class Machine:
         for reel in self.reel_list:
             self.reel_list[reel].symbol_list.draw(self.display_surface)
             self.reel_list[reel].symbol_list.update()
+        self.ui.update()
