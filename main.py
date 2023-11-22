@@ -20,11 +20,14 @@ class Game:
         self.delta_time = 0
 
         # Sound
-        main_sound = pygame.mixer.Sound('audio/bgmusic.mp3')
-        main_sound.play(loops = -1)
+        #main_sound = pygame.mixer.Sound('audio/bgmusic.mp3')
+        #main_sound.play(loops = -1)
+
+    
+
+        
 
     async def run(self):
-
         self.start_time = pygame.time.get_ticks()
 
         while True:
@@ -42,7 +45,7 @@ class Game:
             self.screen.blit(self.bg_image, (0, 0))
             self.machine.update(self.delta_time)
             self.clock.tick(FPS)
-            asyncio.sleep(0)
+            await asyncio.sleep(0)
 
 if __name__ == '__main__':
     game = Game()
