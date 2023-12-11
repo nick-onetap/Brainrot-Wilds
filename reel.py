@@ -72,5 +72,22 @@ class Symbol(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(topleft = pos)
         self.x_val = self.rect.left
 
+        # Win animations
+        self.size_x = 300
+        self.size_y = 300
+        self.alpha = 255
+        self.fade_out = False
+        self.fade_in = False
+
     def update(self):
-        pass
+        # Size increase on winning symbols
+        if self.fade_in:
+            if self.size_x < 305:
+                self.size_x += 1
+                self.size_y += 1
+                self.image = pygame.transform.scale(self.image, (self.size_x, self.size_y))
+
+        # Fade out on losing symbols
+        elif not self.fade_in and self.fade_out:
+            self.alpha -= 7
+            self.image.set_alpha(self.alpha)
