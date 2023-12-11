@@ -9,7 +9,7 @@ class UI:
         self.font = pygame.font.Font(UI_FONT, UI_FONT_SIZE)
         self.bet_font = pygame.font.Font(UI_FONT, UI_FONT_SIZE)
         self.win_font = pygame.font.Font(UI_FONT, WIN_FONT_SIZE)
-        self.win_text_angle = random.randint(-4, 4)
+        self.win_text_angle = random.randint(-4, 8)
 
     def display_info(self):
         player_data = self.player.get_data()
@@ -42,3 +42,4 @@ class UI:
     def update(self):
         pygame.draw.rect(self.display_surface, 'Black', pygame.Rect(0, 900, 1600, 100))
         self.display_info()
+        

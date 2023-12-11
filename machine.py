@@ -13,6 +13,7 @@ class Machine:
         self.reel_list = {}
         self.can_toggle = True
         self.spinning = False
+        self.can_animate = False
         self.win_animation_ongoing = False
 
         # Spin results
@@ -22,6 +23,16 @@ class Machine:
         self.spawn_reels()
         self.currPlayer = Player()
         self.ui = UI(self.currPlayer)
+
+        # Sounds
+        self.spin_sound = pygame.mixer.Sound('audio/start.mp3')
+        self.spin_sound.set_volume(.3)
+        self.win_three = pygame.mixer.Sound('audio/win.mp3')
+        self.spin_sound.set_volume(.5)
+        self.win_four = pygame.mixer.Sound('audio/win.mp3')
+        self.spin_sound.set_volume(.7)
+        self.win_five = pygame.mixer.Sound('audio/win.mp3')
+        self.spin_sound.set_volume(1)
 
     # Spins only if all reels are not spinning
     def cooldowns(self):
@@ -38,13 +49,12 @@ class Machine:
             if self.check_wins(self.spin_result):
                 self.win_data = self.check_wins(self.spin_result)
                 # Win sound
-                #self.play_win_sound(self.win_data)
+                self.play_win_sound(self.win_data)
                 self.pay_player(self.win_data, self.currPlayer)
                 print(self.currPlayer.get_data)
-                #self.win_animation_ongoing = True
-                #self.ui.win_text_angle = random.randint(-4, 4)
+                self.win_animation_ongoing = True
+                self.ui.win_text_angle = random.randint(-4, 4)
 
-                
 
     def input(self):
         keys = pygame.key.get_pressed()
@@ -55,6 +65,7 @@ class Machine:
             self.spin_time = pygame.time.get_ticks()
             self.currPlayer.place_bet()
             self.machine_balance += self.currPlayer.bet_size
+            #print(self.currPlayer.get_data())          Displays bets, etc.
             self.currPlayer.last_payout = None
 
     def draw_reels(self, delta_time):
@@ -79,7 +90,8 @@ class Machine:
             for reel in self.reel_list:
                 # Spin Delay
                 self.reel_list[reel].start_spin(int(reel) * 350)
-                #self.spin_sound.play()
+                self.spin_sound.play()
+                self.win_animation_ongoing = False
 
     def get_result(self):
         for reel in self.reel_list:
@@ -99,13 +111,14 @@ class Machine:
                         hits[horizontal.index(row) + 1] = [sym, longest_sequence(possible_win)]
 
         if hits:
+            self.can_animate = True
             return hits
         
         # Pay table
     def pay_player(self, win_data, curr_player):
         multiplier = 0
         spin_payout = 0
-
+        #print(win_data)                Prints wins
         for v in win_data.values():
             multiplier += len(v[1])
         spin_payout = (multiplier * curr_player.bet_size)
@@ -113,6 +126,31 @@ class Machine:
         self.machine_balance -= spin_payout
         curr_player.last_payout = spin_payout
         curr_player.total_won += spin_payout
+
+    def play_win_sound(self, win_data):
+        sum = 0
+        for item in win_data.values():
+            sum += len(item[1])
+        if sum == 3: self.win_three.play()
+        elif sum == 4: self.win_four.play()
+        elif sum > 4: self.win_five.play()
+    
+    def win_animation(self):
+        if self.win_animation_ongoing and self.win_data:
+            for k, v in list(self.win_data.items()):
+                if k == 1:
+                    animationRow = 3
+                elif k == 3:
+                    animationRow = 1
+                else:
+                    animationRow = 2
+                animationCols = v[1]
+                for reel in self.reel_list:
+                    if reel in animationCols and self.can_animate:
+                        self.reel_list[reel].symbol_list.sprites()[animationRow].fade_in = True
+                    for symbol in self.reel_list[reel].symbol_list:
+                        if not symbol.fade_in:
+                            symbol.fade_out = True
 
 
     def update(self, delta_time):
@@ -123,3 +161,4 @@ class Machine:
             self.reel_list[reel].symbol_list.draw(self.display_surface)
             self.reel_list[reel].symbol_list.update()
         self.ui.update()
+        self.win_animation()
