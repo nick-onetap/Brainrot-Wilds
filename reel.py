@@ -55,16 +55,16 @@ class Reel:
 
     def reel_spin_result(self):
         # Get and return symbol value within a reel
-        spin_symbols =[]
+        spin_symbols = []
         for i in GAME_INDICES:
-            spin_symbols.append(self.symbol_list.sprites()[i])
+            spin_symbols.append(self.symbol_list.sprites()[i].sym_type)
         return spin_symbols[::-1]
 
 class Symbol(pygame.sprite.Sprite):
     def __init__(self, pathToFile, pos, idx):
         super().__init__()
 
-        #self.sym_type = pathToFile.split('/')[3].split('.')[0]
+        self.sym_type = pathToFile.split('/')[1].split('.')[0]
 
         self.pos = pos
         self.idx = idx

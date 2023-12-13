@@ -9,8 +9,8 @@ def flip_horizontal(result):
     for x in range(rows):
         for y in range(columns):
             hvals2[y][rows - x - 1] = horizontal_values[x][y]
-        hvals3 = [item[::-1] for item in hvals2]
-        return hvals3
+    hvals3 = [item[::-1] for item in hvals2]
+    return hvals3
     
 def longest_sequence(hit):
     subSeqLength, longest = 1, 1
