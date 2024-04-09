@@ -49,7 +49,7 @@ class Machine:
             if self.check_wins(self.spin_result):
                 self.win_data = self.check_wins(self.spin_result)
                 # Win sound
-                self.play_win_sound(self.win_data)
+                # self.play_win_sound(self.win_data)
                 self.pay_player(self.win_data, self.currPlayer)
                 print(self.currPlayer.get_data)
                 self.win_animation_ongoing = True
@@ -90,7 +90,7 @@ class Machine:
             for reel in self.reel_list:
                 # Spin Delay
                 self.reel_list[reel].start_spin(int(reel) * 350)
-                self.spin_sound.play()
+                # self.spin_sound.play()
                 self.win_animation_ongoing = False
 
     def get_result(self):

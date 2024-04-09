@@ -11,7 +11,7 @@ class Game:
 
         # Setup
         pygame.init()
-        pygame.mixer.init()
+        # pygame.mixer.init()
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         pygame.display.set_caption('Brainrot Wilds')
         self.clock = pygame.time.Clock()
@@ -21,8 +21,8 @@ class Game:
         self.delta_time = 0
 
         # Sound
-        main_sound = pygame.mixer.Sound('../audio/bgmusic.mp3')
-        main_sound.play(loops = -1)
+        # main_sound = pygame.mixer.Sound('../audio/bgmusic.mp3')
+        # main_sound.play(loops = -1)
 
     def run(self):
 
