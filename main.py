@@ -20,8 +20,8 @@ class Game:
         self.delta_time = 0
 
         # Sound
-        main_sound = pygame.mixer.Sound('audio/bgmusic.mp3')
-        main_sound.play(loops = -1)
+        #main_sound = pygame.mixer.Sound('audio/bgmusic.mp3')
+        #main_sound.play(loops = -1)
 
     def run(self):
 
