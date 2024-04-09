@@ -25,14 +25,14 @@ class Machine:
         self.ui = UI(self.currPlayer)
 
         # Sounds
-        self.spin_sound = pygame.mixer.Sound('audio/start.mp3')
-        self.spin_sound.set_volume(.3)
-        self.win_three = pygame.mixer.Sound('audio/win.mp3')
-        self.spin_sound.set_volume(.5)
-        self.win_four = pygame.mixer.Sound('audio/win.mp3')
-        self.spin_sound.set_volume(.7)
-        self.win_five = pygame.mixer.Sound('audio/win.mp3')
-        self.spin_sound.set_volume(1)
+        # self.spin_sound = pygame.mixer.Sound('audio/start.mp3')
+        # self.spin_sound.set_volume(.3)
+        # self.win_three = pygame.mixer.Sound('audio/win.mp3')
+        # self.spin_sound.set_volume(.5)
+        # self.win_four = pygame.mixer.Sound('audio/win.mp3')
+        # self.spin_sound.set_volume(.7)
+        # self.win_five = pygame.mixer.Sound('audio/win.mp3')
+        # self.spin_sound.set_volume(1)
 
     # Spins only if all reels are not spinning
     def cooldowns(self):
