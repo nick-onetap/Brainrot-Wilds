@@ -26,11 +26,11 @@ class Machine:
 
         # Sounds
         self.spin_sound = pygame.mixer.Sound('audio/start.mp3')
-        self.spin_sound.set_volume(.3)
-        self.win_three = pygame.mixer.Sound('audio/win.mp3')
         self.spin_sound.set_volume(.5)
+        self.win_three = pygame.mixer.Sound('audio/win.mp3')
+        self.spin_sound.set_volume(.8)
         self.win_four = pygame.mixer.Sound('audio/win.mp3')
-        self.spin_sound.set_volume(.7)
+        self.spin_sound.set_volume(.9)
         self.win_five = pygame.mixer.Sound('audio/win.mp3')
         self.spin_sound.set_volume(1)
 
